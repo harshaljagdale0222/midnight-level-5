@@ -172,27 +172,27 @@ export default function SubmitClaim() {
           {step >= 2 && (
             <Card className={step > 2 ? 'opacity-50 pointer-events-none' : ''}>
               <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <span className="bg-brand-100 text-brand-600 rounded-full w-6 h-6 flex items-center justify-center text-sm">2</span>
+                <span className="bg-amber-500/20 text-amber-500 rounded-full w-6 h-6 flex items-center justify-center text-sm border border-amber-500/30">2</span>
                 AI Classification
               </h2>
               {aiAnalysis ? (
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-                    <span className="font-medium text-sm">Category Detected</span>
+                  <div className="flex justify-between items-center p-3 bg-slate-900 border border-slate-700 rounded-lg">
+                    <span className="font-medium text-sm text-slate-300">Category Detected</span>
                     <Badge variant="default">{aiAnalysis.category}</Badge>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-                    <span className="font-medium text-sm">AI Confidence</span>
+                  <div className="flex justify-between items-center p-3 bg-slate-900 border border-slate-700 rounded-lg">
+                    <span className="font-medium text-sm text-slate-300">AI Confidence</span>
                     <Badge variant="success">{(aiAnalysis.confidence * 100).toFixed(0)}%</Badge>
                   </div>
                   {step === 2 && (
-                    <Button className="w-full mt-4" onClick={handleGenerateProof} disabled={loading}>
+                    <Button className="w-full mt-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold" onClick={handleGenerateProof} disabled={loading}>
                       Generate ZK Proof <Shield size={16} className="ml-2" />
                     </Button>
                   )}
                 </div>
               ) : (
-                <div className="flex justify-center p-4"><Loader2 className="animate-spin text-brand-600" /></div>
+                <div className="flex justify-center p-4"><Loader2 className="animate-spin text-amber-500" /></div>
               )}
             </Card>
           )}
@@ -201,24 +201,24 @@ export default function SubmitClaim() {
           {step >= 3 && (
             <Card>
               <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-                <span className="bg-brand-100 text-brand-600 rounded-full w-6 h-6 flex items-center justify-center text-sm">3</span>
+                <span className="bg-amber-500/20 text-amber-500 rounded-full w-6 h-6 flex items-center justify-center text-sm border border-amber-500/30">3</span>
                 Submit Proof
               </h2>
               {zkProof ? (
                 <div className="space-y-4 text-center py-4">
-                  <CheckCircle size={48} className="text-green-500 mx-auto" />
-                  <p className="font-bold text-green-600 dark:text-green-400">Valid ZK Proof Generated</p>
-                  <p className="text-xs font-mono bg-gray-100 dark:bg-gray-800 p-2 rounded truncate break-all">
+                  <CheckCircle size={48} className="text-emerald-500 mx-auto" />
+                  <p className="font-bold text-emerald-400">Valid ZK Proof Generated</p>
+                  <p className="text-xs font-mono bg-slate-900/50 border border-slate-700 text-slate-400 p-3 rounded-lg truncate break-all">
                     {zkProof.verifierString}
                   </p>
-                  <Button className="w-full mt-4" onClick={handleSubmit} disabled={loading}>
+                  <Button className="w-full mt-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold" onClick={handleSubmit} disabled={loading}>
                     Submit to Insurer <ArrowRight size={16} className="ml-2" />
                   </Button>
                 </div>
               ) : loading ? (
-                 <div className="flex justify-center p-4"><Loader2 className="animate-spin text-brand-600" /></div>
+                 <div className="flex justify-center p-4"><Loader2 className="animate-spin text-amber-500" /></div>
               ) : (
-                <div className="text-red-500 font-bold p-4 text-center">Proof Generation Failed</div>
+                <div className="text-red-400 font-bold p-4 text-center">Proof Generation Failed</div>
               )}
             </Card>
           )}

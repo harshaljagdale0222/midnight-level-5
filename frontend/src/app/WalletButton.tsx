@@ -22,57 +22,71 @@ export function WalletButton() {
       // @ts-ignore
       const midnightObj = window.midnight;
       
-      if (!midnightObj || Object.keys(midnightObj).length === 0) {
-        throw new Error("Midnight Wallet (1AM / Lace) not found. Please install the browser extension.");
+      if (!midnightObj) {
+        throw new Error("1AM Wallet extension not found! Please install it from the Chrome Web Store.");
       }
 
-      // Detect 1AM wallet key, or fallback to first available
+      // Log the full wallet structure so we can debug
+      console.log("=== MIDNIGHT WALLET STRUCTURE ===");
+      console.log("window.midnight:", midnightObj);
+      console.log("Keys:", Object.keys(midnightObj));
+      Object.keys(midnightObj).forEach(key => {
+        console.log(`window.midnight.${key}:`, midnightObj[key]);
+        console.log(`  typeof:`, typeof midnightObj[key]);
+        if (typeof midnightObj[key] === 'object' && midnightObj[key]) {
+          console.log(`  methods:`, Object.keys(midnightObj[key]));
+        }
+      });
+
+      // Detect provider key
       const providerKey = Object.keys(midnightObj).find(key => key.toLowerCase().includes('1am')) 
                           || Object.keys(midnightObj).find(key => key.toLowerCase().includes('lace'))
+                          || Object.keys(midnightObj).find(key => key.toLowerCase().includes('mn'))
                           || Object.keys(midnightObj)[0];
+
+      if (!providerKey) {
+        throw new Error("No Midnight wallet provider found in window.midnight");
+      }
                           
       const walletProvider = midnightObj[providerKey];
-      console.log(`Found Midnight wallet provider: "${providerKey}"`, walletProvider);
+      console.log(`Using provider key: "${providerKey}"`, walletProvider);
 
-      let api: any = walletProvider;
-      let walletAddress = "Connected Wallet";
+      let api: any = null;
+      let walletAddress = "";
 
-      // Pattern 1: Standard EIP-1193 style - has enable() method
+      // Only try real connection methods - NO dummy fallback
       if (typeof walletProvider.enable === 'function') {
+        console.log("Calling walletProvider.enable()...");
         api = await walletProvider.enable();
-      }
-      // Pattern 2: Has request() method (like MetaMask style)
-      else if (typeof walletProvider.request === 'function') {
-        await walletProvider.request({ method: 'midnight_enable' });
-        api = walletProvider;
-      }
-      // Pattern 3: Has serviceWorker or isEnabled - already active
-      else if (walletProvider.isEnabled || walletProvider.serviceWorker) {
-        api = walletProvider;
-      }
-      // Pattern 4: Direct provider object with state()
-      else {
-        api = walletProvider;
+      } else if (typeof walletProvider.request === 'function') {
+        console.log("Calling walletProvider.request()...");
+        api = await walletProvider.request({ method: 'midnight_requestAccounts' });
+      } else if (typeof walletProvider.connect === 'function') {
+        console.log("Calling walletProvider.connect()...");
+        api = await walletProvider.connect();
+      } else {
+        // Show error with actual structure so user/dev can fix
+        const methods = typeof walletProvider === 'object' ? Object.keys(walletProvider) : [];
+        throw new Error(
+          `1AM Wallet found but cannot connect. Available methods: [${methods.join(', ')}]. Check console for full structure.`
+        );
       }
 
-      // Try to get address from state
+      // Get address
       if (api && typeof api.state === 'function') {
         const state = await api.state();
-        if (state?.address) walletAddress = state.address;
+        walletAddress = state?.address || "Connected";
       } else if (api && typeof api.getAddress === 'function') {
         walletAddress = await api.getAddress();
       } else if (api && api.address) {
         walletAddress = api.address;
       } else {
-        // Wallet connected but address not exposed - still mark as connected
-        walletAddress = `${providerKey.toUpperCase()} Connected`;
+        walletAddress = `${providerKey} Connected`;
       }
 
       setAddress(walletAddress);
       localStorage.setItem('midnightWallet', walletAddress);
       setConnecting(false);
-      
-      // Redirect to login/dashboard
       router.push('/login');
 
     } catch (err: any) {
@@ -88,14 +102,23 @@ export function WalletButton() {
   };
 
   if (address) {
+    // Shorten long addresses like: mnXyz...abcd
+    const displayAddr = address.length > 16 
+      ? `${address.slice(0, 8)}...${address.slice(-4)}`
+      : address;
+
     return (
-      <div className="flex items-center gap-4">
-        <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20 truncate max-w-[150px]">
-          {address}
-        </span>
+      <div className="flex items-center gap-3">
+        <div 
+          className="flex items-center gap-2 font-mono text-xs text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20 cursor-default"
+          title={address}
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block"></span>
+          {displayAddr}
+        </div>
         <button 
           onClick={disconnect}
-          className="text-xs text-slate-400 hover:text-red-400 font-bold"
+          className="text-xs text-slate-500 hover:text-red-400 transition-colors"
         >
           Disconnect
         </button>

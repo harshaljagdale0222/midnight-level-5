@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  role      String   // CLAIMANT, INSURER, AUDITOR
+  name      String
+  email     String   @unique
+  claims    Claim[]
+  createdAt DateTime @default(now())
+}
+
+model Policy {
+  id        String   @id // POL-001
+  name      String
+  version   String
+  rulesJson String   // Store rules as JSON string
+  claims    Claim[]
+  createdAt DateTime @default(now())
+}
+
+model Claim {
+  id              String   @id // CLM-2026-001
+  userId          String
+  policyId        String
+  category        String?
+  aiConfidence    Float?
+  status          String   // PENDING, VERIFIED, REJECTED
+  failedCondition String?
+  zkProofId       String?  // Reference to proof
+  
+  user            User     @relation(fields: [userId], references: [id])
+  policy          Policy   @relation(fields: [policyId], references: [id])
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model AuditRecord {
+  id             String   @id // EVT-...
+  verificationId String
+  claimId        String
+  policyId       String
+  policyVersion  String
+  proofStatus    String
+  verifier       String
+  timestamp      DateTime @default(now())
+}

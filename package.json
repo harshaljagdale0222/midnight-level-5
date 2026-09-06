@@ -1,0 +1,29 @@
+{
+  "name": "privacyguard-insurance",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "ai",
+    "zk",
+    "midnight",
+    "database",
+    "policies",
+    "audit"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "start": "npm run start --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "db:push": "npm run db:push --workspace=database",
+    "db:seed": "npm run db:seed --workspace=database"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0"
+  }
+}

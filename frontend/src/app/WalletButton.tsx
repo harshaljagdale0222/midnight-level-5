@@ -9,7 +9,6 @@ export function WalletButton() {
   const [connecting, setConnecting] = useState(false);
   const [error, setError] = useState('');
 
-  // Check if wallet is already connected on mount
   useEffect(() => {
     const saved = localStorage.getItem('midnightWallet');
     if (saved) setAddress(saved);
@@ -21,14 +20,20 @@ export function WalletButton() {
     
     try {
       // @ts-ignore
-      const midnightObj = window.midnight?.mnLace;
+      const midnightObj = window.midnight;
       
-      if (!midnightObj) {
-        throw new Error("Midnight Wallet not found. Please install the Midnight Lace extension.");
+      if (!midnightObj || Object.keys(midnightObj).length === 0) {
+        throw new Error("Midnight Wallet (like 1AM or Lace) not found. Please install the extension.");
       }
 
-      // Trigger the ACTUAL wallet popup
-      const api = await midnightObj.enable();
+      // Automatically detect 1AM wallet or fallback to the first available provider
+      const providerKey = Object.keys(midnightObj).find(key => key.toLowerCase().includes('1am')) 
+                          || Object.keys(midnightObj)[0];
+                          
+      const walletProvider = midnightObj[providerKey];
+
+      // Trigger the ACTUAL wallet popup for 1AM or Lace
+      const api = await walletProvider.enable();
       
       // Get the current state (address/network)
       const state = await api.state();
@@ -47,7 +52,6 @@ export function WalletButton() {
 
     } catch (err: any) {
       console.error("Wallet connection failed:", err);
-      // The user rejected the prompt, or an error occurred
       setError(err.message || 'Connection rejected or failed');
       setConnecting(false);
     }
@@ -76,13 +80,13 @@ export function WalletButton() {
 
   return (
     <div className="flex items-center gap-2">
-      {error && <span className="text-xs text-red-400 mr-2">{error}</span>}
+      {error && <span className="text-xs text-red-400 mr-2 max-w-[200px] truncate" title={error}>{error}</span>}
       <button 
         onClick={connectWallet}
         disabled={connecting}
         className="text-sm font-bold bg-amber-500 text-slate-950 px-5 py-2 rounded-full hover:bg-amber-400 transition-colors shadow-[0_0_10px_rgba(245,158,11,0.2)] disabled:opacity-50"
       >
-        {connecting ? 'Waiting for Wallet...' : 'Connect Midnight Wallet'}
+        {connecting ? 'Waiting...' : 'Connect Midnight Wallet'}
       </button>
     </div>
   );

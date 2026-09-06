@@ -1,11 +1,22 @@
 {
-  "name": "midnight",
+  "name": "privacyguard-midnight-contract",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Midnight Smart Contract Deployment Scripts",
+  "main": "deploy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "docker run --rm -v ${PWD}:/src midnightnetwork/compactc:latest /src/PrivacyGuard.compact -o /src/dist",
+    "deploy": "ts-node deploy.ts"
   },
-  "keywords": [],
-  "type": "commonjs"
+  "dependencies": {
+    "@midnight-network/compact-js": "^1.0.0",
+    "@midnight-network/zswap": "^1.0.0",
+    "@midnight-network/wallet-api": "^1.0.0",
+    "@midnight-network/providers-pino": "^1.0.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "ts-node": "^10.9.1",
+    "@types/node": "^20.5.9"
+  }
 }

@@ -1,0 +1,23 @@
+// PrivacyGuard Insurance - Midnight ZK Circuit
+// 
+// This contract proves that an insurance claim is valid without 
+// revealing the private claim amount or hospitalization hours.
+
+pragma compact "0.1.0";
+
+export circuit verify_claim(
+    private_claim_amount: u64,
+    private_hospitalization_hours: u64,
+    public_policy_max_amount: u64,
+    public_policy_min_hours: u64
+): bool {
+    // 1. The claimed amount must be greater than 0 but less than or equal to the policy's maximum limit.
+    assert(private_claim_amount > 0, "Claim amount must be greater than 0");
+    assert(private_claim_amount <= public_policy_max_amount, "Claim amount exceeds policy limits");
+
+    // 2. The hospitalization hours must meet or exceed the policy's minimum required hours.
+    assert(private_hospitalization_hours >= public_policy_min_hours, "Hospitalization duration is too short to qualify");
+
+    // If both assertions pass, the proof is mathematically sound and valid.
+    return true;
+}

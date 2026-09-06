@@ -13,11 +13,11 @@ export default function SubmitClaim() {
   
   const [step, setStep] = useState(1);
   const [privateData, setPrivateData] = useState({
-    policyId: '',
-    claimDescription: 'Admitted to hospital for 48 hours following severe chest pain.',
-    age: 47,
-    hospitalization_hours: 48,
-    claim_amount: 150000,
+    policyId: '', // User will select this
+    claimDescription: 'Emergency admission at Apollo Hospital (Patient ID: AP-8492) due to Acute Myocardial Infarction. Patient underwent emergency Angioplasty. Total ICU stay: 72 hours. All discharge summaries and billing attached via encrypted IPFS hash.',
+    age: 52,
+    hospitalization_hours: 72,
+    claim_amount: 345000,
     policy_active: true
   });
   

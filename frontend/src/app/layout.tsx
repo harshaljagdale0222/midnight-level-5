@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
+import { WalletButton } from './WalletButton'; // We'll create this client component
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,9 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/login" className="text-sm font-medium text-slate-400 hover:text-amber-400 transition-colors">
                 Login
               </Link>
-              <Link href="/login" className="text-sm font-bold bg-amber-500 text-slate-950 px-5 py-2 rounded-full hover:bg-amber-400 transition-colors shadow-[0_0_10px_rgba(245,158,11,0.2)]">
-                Try Demo
-              </Link>
+              <WalletButton />
             </nav>
           </div>
         </header>

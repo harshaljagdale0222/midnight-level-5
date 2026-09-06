@@ -23,24 +23,49 @@ export function WalletButton() {
       const midnightObj = window.midnight;
       
       if (!midnightObj || Object.keys(midnightObj).length === 0) {
-        throw new Error("Midnight Wallet (like 1AM or Lace) not found. Please install the extension.");
+        throw new Error("Midnight Wallet (1AM / Lace) not found. Please install the browser extension.");
       }
 
-      // Automatically detect 1AM wallet or fallback to the first available provider
+      // Detect 1AM wallet key, or fallback to first available
       const providerKey = Object.keys(midnightObj).find(key => key.toLowerCase().includes('1am')) 
+                          || Object.keys(midnightObj).find(key => key.toLowerCase().includes('lace'))
                           || Object.keys(midnightObj)[0];
                           
       const walletProvider = midnightObj[providerKey];
+      console.log(`Found Midnight wallet provider: "${providerKey}"`, walletProvider);
 
-      // Trigger the ACTUAL wallet popup for 1AM or Lace
-      const api = await walletProvider.enable();
-      
-      // Get the current state (address/network)
-      const state = await api.state();
-      
+      let api: any = walletProvider;
       let walletAddress = "Connected Wallet";
-      if (state && state.address) {
-        walletAddress = state.address;
+
+      // Pattern 1: Standard EIP-1193 style - has enable() method
+      if (typeof walletProvider.enable === 'function') {
+        api = await walletProvider.enable();
+      }
+      // Pattern 2: Has request() method (like MetaMask style)
+      else if (typeof walletProvider.request === 'function') {
+        await walletProvider.request({ method: 'midnight_enable' });
+        api = walletProvider;
+      }
+      // Pattern 3: Has serviceWorker or isEnabled - already active
+      else if (walletProvider.isEnabled || walletProvider.serviceWorker) {
+        api = walletProvider;
+      }
+      // Pattern 4: Direct provider object with state()
+      else {
+        api = walletProvider;
+      }
+
+      // Try to get address from state
+      if (api && typeof api.state === 'function') {
+        const state = await api.state();
+        if (state?.address) walletAddress = state.address;
+      } else if (api && typeof api.getAddress === 'function') {
+        walletAddress = await api.getAddress();
+      } else if (api && api.address) {
+        walletAddress = api.address;
+      } else {
+        // Wallet connected but address not exposed - still mark as connected
+        walletAddress = `${providerKey.toUpperCase()} Connected`;
       }
 
       setAddress(walletAddress);

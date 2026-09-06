@@ -123,45 +123,45 @@ export default function SubmitClaim() {
           {/* STEP 1: Input */}
           <Card className={step > 1 ? 'opacity-50 pointer-events-none' : ''}>
             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-              <span className="bg-brand-100 text-brand-600 rounded-full w-6 h-6 flex items-center justify-center text-sm">1</span>
+              <span className="bg-amber-500/20 text-amber-500 rounded-full w-6 h-6 flex items-center justify-center text-sm border border-amber-500/30">1</span>
               Private Claim Details
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Select Policy</label>
+                <label className="block text-sm font-medium mb-1 text-slate-300">Select Policy</label>
                 <select 
-                  className="w-full p-2 border border-border rounded-md bg-background"
+                  className="w-full p-2.5 border border-slate-700 rounded-lg bg-slate-900 text-slate-100 focus:border-amber-500/50 outline-none"
                   value={privateData.policyId}
                   onChange={e => setPrivateData({...privateData, policyId: e.target.value})}
                 >
-                  <option value="">-- Select --</option>
+                  <option value="" className="bg-slate-900 text-slate-100">-- Select --</option>
                   {policies.map(p => (
-                    <option key={p.policyId} value={p.policyId}>{p.name} ({p.policyId})</option>
+                    <option key={p.policyId} value={p.policyId} className="bg-slate-900 text-slate-100">{p.name} ({p.policyId})</option>
                   ))}
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Claim Description</label>
+                <label className="block text-sm font-medium mb-1 text-slate-300">Claim Description</label>
                 <textarea 
-                  className="w-full p-2 border border-border rounded-md bg-background" 
+                  className="w-full p-2.5 border border-slate-700 rounded-lg bg-slate-900 text-slate-100 focus:border-amber-500/50 outline-none" 
                   rows={2}
                   value={privateData.claimDescription}
                   onChange={e => setPrivateData({...privateData, claimDescription: e.target.value})}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4 border-t border-border pt-4 mt-2">
+              <div className="grid grid-cols-2 gap-4 border-t border-slate-800 pt-4 mt-2">
                 <div className="col-span-2"><Badge variant="danger">Private Data - Never Sent to Server</Badge></div>
                 <div>
-                  <label className="block text-xs font-medium mb-1">Bill Amount (₹)</label>
-                  <input type="number" className="w-full p-2 text-sm border border-border rounded-md bg-background" value={privateData.claim_amount} onChange={e => setPrivateData({...privateData, claim_amount: Number(e.target.value)})} />
+                  <label className="block text-xs font-medium mb-1 text-slate-300">Bill Amount (₹)</label>
+                  <input type="number" className="w-full p-2.5 text-sm border border-slate-700 rounded-lg bg-slate-900 text-slate-100 focus:border-amber-500/50 outline-none" value={privateData.claim_amount} onChange={e => setPrivateData({...privateData, claim_amount: Number(e.target.value)})} />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium mb-1">Hospitalization (Hours)</label>
-                  <input type="number" className="w-full p-2 text-sm border border-border rounded-md bg-background" value={privateData.hospitalization_hours} onChange={e => setPrivateData({...privateData, hospitalization_hours: Number(e.target.value)})} />
+                  <label className="block text-xs font-medium mb-1 text-slate-300">Hospitalization (Hours)</label>
+                  <input type="number" className="w-full p-2.5 text-sm border border-slate-700 rounded-lg bg-slate-900 text-slate-100 focus:border-amber-500/50 outline-none" value={privateData.hospitalization_hours} onChange={e => setPrivateData({...privateData, hospitalization_hours: Number(e.target.value)})} />
                 </div>
               </div>
               {step === 1 && (
-                <Button className="w-full mt-4" onClick={handleAiAnalysis} disabled={!privateData.policyId || loading}>
+                <Button className="w-full mt-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold" onClick={handleAiAnalysis} disabled={!privateData.policyId || loading}>
                   Analyze with AI <ArrowRight size={16} className="ml-2" />
                 </Button>
               )}

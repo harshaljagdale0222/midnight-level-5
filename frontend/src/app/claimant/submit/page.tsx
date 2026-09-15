@@ -139,6 +139,9 @@ export default function SubmitClaim() {
                     <option key={p.policyId} value={p.policyId} className="bg-slate-900 text-slate-100">{p.name} ({p.policyId})</option>
                   ))}
                 </select>
+                <p className="text-xs text-amber-400/80 mt-2">
+                  💡 <b>Hackathon Note:</b> For success, <b>Hospitalization must be &gt;= 24</b> and <b>Bill Amount &lt;= 5,00,000</b>. Try breaking these rules to see a rejected proof!
+                </p>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1 text-slate-300">Claim Description</label>

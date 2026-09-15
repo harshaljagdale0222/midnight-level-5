@@ -67,7 +67,7 @@ export default function SubmitClaim() {
       addLog("Generating Zero-Knowledge Proof (this may take a moment)...");
       
       const result = await api.generateZKProof(
-        privateData, 
+        { ...privateData, claim_category: aiAnalysis.category }, 
         selectedPolicy.rules,
         selectedPolicy.version
       );

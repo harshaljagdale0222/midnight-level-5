@@ -1,4 +1,5 @@
 # PrivacyGuard Insurance 🛡️
+[![CI/CD Pipeline](https://github.com/harshaljagdale0222/midnight-level4/actions/workflows/ci.yml/badge.svg)](https://github.com/harshaljagdale0222/midnight-level4/actions/workflows/ci.yml)
 **Verify Insurance Claims. Reveal Less.**
 
 PrivacyGuard Insurance is a privacy-first web3 insurance claim verification system. It leverages zero-knowledge proofs (powered by the Midnight network) to mathematically prove that a medical or financial claim meets policy conditions, without exposing the raw underlying sensitive data to the insurer.

@@ -21,15 +21,17 @@ export default function Home() {
           Prove that an insurance claim satisfies policy requirements without exposing unnecessary medical or financial information. Powered by <span className="text-amber-400 font-semibold">Midnight</span> zero-knowledge technology.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-10">
-          <Link href="/login">
-            <Button className="h-14 px-12 text-lg rounded-full">
-              Try Demo
-            </Button>
+          <Link 
+            href="/login" 
+            className="inline-flex items-center justify-center font-bold rounded-full px-12 h-14 text-lg transition-all bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 hover:from-amber-400 hover:to-amber-300 shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] border border-amber-300/50"
+          >
+            Try Demo
           </Link>
-          <Link href="/login?role=insurer">
-            <Button variant="outline" className="h-14 px-12 text-lg rounded-full">
-              Verify a Claim
-            </Button>
+          <Link 
+            href="/login?role=insurer" 
+            className="inline-flex items-center justify-center font-bold rounded-full px-12 h-14 text-lg transition-all border border-amber-500/30 text-amber-400 hover:bg-amber-500/10 hover:border-amber-500/50"
+          >
+            Verify a Claim
           </Link>
         </div>
       </section>

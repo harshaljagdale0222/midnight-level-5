@@ -3,6 +3,9 @@
 
 ![PrivacyGuard Banner](banner.png)
 
+🚀 **Live Demo:** [https://midnight-level4-frontend.vercel.app](https://midnight-level4-frontend.vercel.app/)  
+🐦 **Product X Profile:** [Link added in Hackathon Submission]  
+
 **Verify Insurance Claims. Reveal Less.**
 
 PrivacyGuard Insurance is a privacy-first web3 insurance claim verification system. It leverages zero-knowledge proofs (powered by the Midnight network) to mathematically prove that a medical or financial claim meets policy conditions, without exposing the raw underlying sensitive data to the insurer.

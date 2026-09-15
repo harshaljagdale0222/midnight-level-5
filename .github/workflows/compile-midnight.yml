@@ -1,0 +1,31 @@
+name: Compile Midnight Contract
+
+on:
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Compile Compact Contract
+        run: |
+          cd midnight
+          echo "Starting Docker compilation..."
+          docker pull midnightnetwork/compactc:latest || echo "Pull failed, trying alternative..."
+          # If midnightnetwork doesn't work, this is just a fallback log.
+          docker run --rm -v ${{ github.workspace }}/midnight:/src midnightnetwork/compactc:latest /src/PrivacyGuard.compact -o /src/dist
+          
+      - name: Commit dist folder back to repo
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add midnight/dist
+          git commit -m "chore: add compiled midnight contract [skip ci]" || echo "No changes to commit"
+          git push

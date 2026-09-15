@@ -19,8 +19,8 @@ jobs:
           cd midnight
           chmod -R 777 .
           echo "Starting Docker compilation..."
-          docker pull midnightnetwork/compactc:latest || echo "Pull failed, trying alternative..."
-          docker run --rm -u root -v ${{ github.workspace }}/midnight:/src midnightnetwork/compactc:latest /src/PrivacyGuard.compact -o /src/dist
+          docker pull ghcr.io/midnight-ntwrk/compactc:latest || echo "Pull failed..."
+          docker run --rm -v ${{ github.workspace }}/midnight:/src ghcr.io/midnight-ntwrk/compactc:latest /src/PrivacyGuard.compact -o /src/dist
           
       - name: Commit dist folder back to repo
         run: |

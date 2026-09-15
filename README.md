@@ -99,6 +99,14 @@ The core privacy logic is written in Midnight's `Compact` language. (Located in 
 
 ---
 
+## 🔄 CI/CD Pipeline
+
+The project uses GitHub Actions for continuous integration and automated deployments.
+
+![CI/CD Pipeline](cicd.png)
+
+---
+
 ## 📜 Midnight Compact Contract
 The core ZK logic is available in `midnight/PrivacyGuard.compact`. 
 To deploy this yourself to the Midnight Preprod network:

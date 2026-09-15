@@ -17,10 +17,10 @@ jobs:
       - name: Compile Compact Contract
         run: |
           cd midnight
+          chmod -R 777 .
           echo "Starting Docker compilation..."
           docker pull midnightnetwork/compactc:latest || echo "Pull failed, trying alternative..."
-          # If midnightnetwork doesn't work, this is just a fallback log.
-          docker run --rm -v ${{ github.workspace }}/midnight:/src midnightnetwork/compactc:latest /src/PrivacyGuard.compact -o /src/dist
+          docker run --rm -u root -v ${{ github.workspace }}/midnight:/src midnightnetwork/compactc:latest /src/PrivacyGuard.compact -o /src/dist
           
       - name: Commit dist folder back to repo
         run: |

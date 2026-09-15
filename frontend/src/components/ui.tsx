@@ -41,7 +41,7 @@ export function Button({
   );
 }
 
-export function Badge({ children, variant = 'default' }: { children: React.ReactNode; variant?: 'default' | 'success' | 'warning' | 'danger' | 'info' }) {
+export function Badge({ children, variant = 'default', className = '' }: { children: React.ReactNode; variant?: 'default' | 'success' | 'warning' | 'danger' | 'info'; className?: string }) {
   const variants = {
     default: "bg-slate-800/60 text-slate-300 border border-slate-700 backdrop-blur-sm shadow-inner",
     success: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.1)]",
@@ -51,7 +51,7 @@ export function Badge({ children, variant = 'default' }: { children: React.React
   };
 
   return (
-    <span className={`px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase ${variants[variant]}`}>
+    <span className={`px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase ${variants[variant]} ${className}`}>
       {children}
     </span>
   );

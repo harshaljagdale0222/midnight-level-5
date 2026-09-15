@@ -1,7 +1,6 @@
 # PrivacyGuard Insurance 🛡️
 [![CI/CD Pipeline](https://github.com/harshaljagdale0222/midnight-level4/actions/workflows/ci.yml/badge.svg)](https://github.com/harshaljagdale0222/midnight-level4/actions/workflows/ci.yml)
 
-![PrivacyGuard Banner](banner.png)
 
 🚀 **Live Demo:** [https://midnight-level4-frontend.vercel.app](https://midnight-level4-frontend.vercel.app/)  
 🐦 **Product X Profile:** [https://x.com/Harshal_0222](https://x.com/Harshal_0222)  

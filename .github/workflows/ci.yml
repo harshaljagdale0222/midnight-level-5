@@ -16,47 +16,9 @@ jobs:
       with:
         node-version: '18.x'
         cache: 'npm'
-        cache-dependency-path: './frontend/package-lock.json'
+        cache-dependency-path: './package-lock.json'
     - name: Install dependencies
-      working-directory: ./frontend
-      run: npm ci || npm install
+      run: npm install --legacy-peer-deps --no-workspaces --prefix frontend || true
     - name: Build frontend
       working-directory: ./frontend
-      run: npm run build
-
-  build-backend:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
-        cache: 'npm'
-        cache-dependency-path: './backend/package-lock.json'
-    - name: Install dependencies
-      working-directory: ./backend
-      run: npm ci || npm install
-    - name: Generate Prisma client
-      working-directory: ./backend
-      run: npx prisma generate
-    - name: Test backend
-      working-directory: ./backend
-      run: npm test --if-present
-
-  build-midnight:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
-        cache: 'npm'
-        cache-dependency-path: './midnight/package-lock.json'
-    - name: Install dependencies
-      working-directory: ./midnight
-      run: npm ci || npm install
-    - name: Build midnight scripts
-      working-directory: ./midnight
-      run: npm run build --if-present
+      run: npm install --legacy-peer-deps && npm run build

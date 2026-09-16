@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link';
 import { WalletButton } from './WalletButton';
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "PrivacyGuard Insurance",
@@ -23,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${outfit.variable} h-full antialiased`}
+      className="h-full antialiased font-sans"
     >
       <body className="min-h-full flex flex-col bg-slate-950 text-slate-50">
         <header className="border-b border-amber-500/20 bg-slate-900/80 backdrop-blur-xl sticky top-0 z-50">

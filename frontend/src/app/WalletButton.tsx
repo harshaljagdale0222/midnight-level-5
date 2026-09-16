@@ -38,38 +38,35 @@ export function WalletButton() {
         }
       });
 
-      // Detect provider key
-      const providerKey = Object.keys(midnightObj).find(key => key.toLowerCase().includes('1am')) 
-                          || Object.keys(midnightObj).find(key => key.toLowerCase().includes('lace'))
-                          || Object.keys(midnightObj).find(key => key.toLowerCase().includes('mn'))
-                          || Object.keys(midnightObj)[0];
-
-      if (!providerKey) {
-        throw new Error("No Midnight wallet provider found in window.midnight");
+      // @ts-ignore
+      let walletProvider = window.midnight?.mnLace;
+      
+      // Fallback to 1AM if Lace is not found
+      if (!walletProvider && window.midnight) {
+        const providerKey = Object.keys(window.midnight).find(key => key.toLowerCase().includes('1am')) 
+                            || Object.keys(window.midnight)[0];
+        walletProvider = (window.midnight as any)[providerKey];
       }
-                          
-      const walletProvider = midnightObj[providerKey];
-      console.log(`Using provider key: "${providerKey}"`, walletProvider);
+
+      if (!walletProvider) {
+        throw new Error("Midnight Wallet not found! Please install Lace or 1AM extension.");
+      }
 
       let api: any = null;
       let walletAddress = "";
 
-      // Only try real connection methods - NO dummy fallback
+      // Trigger the ACTUAL wallet popup
       if (typeof walletProvider.enable === 'function') {
-        console.log("Calling walletProvider.enable()...");
+        console.log("Calling enable()...");
         api = await walletProvider.enable();
       } else if (typeof walletProvider.request === 'function') {
-        console.log("Calling walletProvider.request()...");
+        console.log("Calling request()...");
         api = await walletProvider.request({ method: 'midnight_requestAccounts' });
       } else if (typeof walletProvider.connect === 'function') {
-        console.log("Calling walletProvider.connect()...");
+        console.log("Calling connect()...");
         api = await walletProvider.connect();
       } else {
-        // Show error with actual structure so user/dev can fix
-        const methods = typeof walletProvider === 'object' ? Object.keys(walletProvider) : [];
-        throw new Error(
-          `1AM Wallet found but cannot connect. Available methods: [${methods.join(', ')}]. Check console for full structure.`
-        );
+        throw new Error("Could not find a valid connect method on the wallet.");
       }
 
       // Get address

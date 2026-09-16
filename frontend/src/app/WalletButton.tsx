@@ -54,41 +54,30 @@ export function WalletButton() {
       let api: any = null;
       let walletAddress = "";
 
-      try {
-        if (typeof walletProvider.enable === 'function') {
-          console.log("Calling walletProvider.enable()...");
-          api = await walletProvider.enable();
-        } else if (typeof walletProvider.request === 'function') {
-          console.log("Calling walletProvider.request()...");
-          api = await walletProvider.request({ method: 'midnight_requestAccounts' });
-        } else if (typeof walletProvider.connect === 'function') {
-          console.log("Calling walletProvider.connect()...");
-          api = await walletProvider.connect();
-        }
-      } catch (innerErr) {
-        console.warn("Wallet extension connection failed or threw an error, using mock fallback for Hackathon demo stability:", innerErr);
-        api = { address: `${providerKey}_connected_mock_${Math.floor(Math.random() * 1000)}` };
-      }
-
-      if (!api) {
-        console.warn("Wallet did not return API, using mock fallback.");
-        api = { address: `${providerKey}_connected_mock_${Math.floor(Math.random() * 1000)}` };
+      // Only try real connection methods - NO dummy fallback
+      if (typeof walletProvider.enable === 'function') {
+        console.log("Calling walletProvider.enable()...");
+        api = await walletProvider.enable();
+      } else if (typeof walletProvider.request === 'function') {
+        console.log("Calling walletProvider.request()...");
+        api = await walletProvider.request({ method: 'midnight_requestAccounts' });
+      } else if (typeof walletProvider.connect === 'function') {
+        console.log("Calling walletProvider.connect()...");
+        api = await walletProvider.connect();
+      } else {
+        // Show error with actual structure so user/dev can fix
+        const methods = typeof walletProvider === 'object' ? Object.keys(walletProvider) : [];
+        throw new Error(
+          `1AM Wallet found but cannot connect. Available methods: [${methods.join(', ')}]. Check console for full structure.`
+        );
       }
 
       // Get address
       if (api && typeof api.state === 'function') {
-        try {
-          const state = await api.state();
-          walletAddress = state?.address || "Connected";
-        } catch (e) {
-          walletAddress = "Connected (Fallback)";
-        }
+        const state = await api.state();
+        walletAddress = state?.address || "Connected";
       } else if (api && typeof api.getAddress === 'function') {
-        try {
-          walletAddress = await api.getAddress();
-        } catch (e) {
-          walletAddress = "Connected (Fallback)";
-        }
+        walletAddress = await api.getAddress();
       } else if (api && api.address) {
         walletAddress = api.address;
       } else {
@@ -102,12 +91,13 @@ export function WalletButton() {
 
     } catch (err: any) {
       console.error("Wallet connection failed:", err);
-      // Even if everything fails, provide a fallback for demo purposes
-      const mockAddr = `mock_wallet_${Math.floor(Math.random() * 1000)}`;
-      setAddress(mockAddr);
-      localStorage.setItem('midnightWallet', mockAddr);
+      // Give a user-friendly message when wallet is locked or request is rejected
+      if (err.message && err.message.includes('Request failed')) {
+        setError('Wallet locked or request rejected. Please unlock it.');
+      } else {
+        setError(err.message || 'Connection rejected or failed');
+      }
       setConnecting(false);
-      router.push('/login');
     }
   };
 

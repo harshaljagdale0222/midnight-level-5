@@ -22,7 +22,7 @@ PrivacyGuard Insurance is a privacy-first web3 insurance claim verification syst
 - [x] **Live Preprod Demo**: [https://midnight-level4-frontend.vercel.app](https://midnight-level4-frontend.vercel.app)
 - [ ] **Midnight Contract Address**: [Insert Midnight Preprod Address Here]
 - [x] **Product X (Twitter) Profile**: [https://x.com/Harshal_0222](https://x.com/Harshal_0222)
-- [ ] **Demo Video**: [Insert Demo Video Link Here]
+- [x] **Demo Video**: [https://www.loom.com/share/1915d97c336a466a9d186d6764dad876](https://www.loom.com/share/1915d97c336a466a9d186d6764dad876)
 
 ---
 

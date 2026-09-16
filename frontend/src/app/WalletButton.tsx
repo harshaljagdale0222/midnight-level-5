@@ -38,35 +38,38 @@ export function WalletButton() {
         }
       });
 
-      let providerKey = 'mnLace';
-      let walletProvider = window.midnight?.mnLace;
-      
-      // Fallback to 1AM if Lace is not found
-      if (!walletProvider && window.midnight) {
-        providerKey = Object.keys(window.midnight).find(key => key.toLowerCase().includes('1am')) 
-                            || Object.keys(window.midnight)[0];
-        walletProvider = (window.midnight as any)[providerKey];
-      }
+      // Detect provider key
+      const providerKey = Object.keys(midnightObj).find(key => key.toLowerCase().includes('1am')) 
+                          || Object.keys(midnightObj).find(key => key.toLowerCase().includes('lace'))
+                          || Object.keys(midnightObj).find(key => key.toLowerCase().includes('mn'))
+                          || Object.keys(midnightObj)[0];
 
-      if (!walletProvider) {
-        throw new Error("Midnight Wallet not found! Please install Lace or 1AM extension.");
+      if (!providerKey) {
+        throw new Error("No Midnight wallet provider found in window.midnight");
       }
+                          
+      const walletProvider = midnightObj[providerKey];
+      console.log(`Using provider key: "${providerKey}"`, walletProvider);
 
       let api: any = null;
       let walletAddress = "";
 
-      // Trigger the ACTUAL wallet popup
+      // Only try real connection methods - NO dummy fallback
       if (typeof walletProvider.enable === 'function') {
-        console.log("Calling enable()...");
+        console.log("Calling walletProvider.enable()...");
         api = await walletProvider.enable();
       } else if (typeof walletProvider.request === 'function') {
-        console.log("Calling request()...");
+        console.log("Calling walletProvider.request()...");
         api = await walletProvider.request({ method: 'midnight_requestAccounts' });
       } else if (typeof walletProvider.connect === 'function') {
-        console.log("Calling connect()...");
+        console.log("Calling walletProvider.connect()...");
         api = await walletProvider.connect();
       } else {
-        throw new Error("Could not find a valid connect method on the wallet.");
+        // Show error with actual structure so user/dev can fix
+        const methods = typeof walletProvider === 'object' ? Object.keys(walletProvider) : [];
+        throw new Error(
+          `1AM Wallet found but cannot connect. Available methods: [${methods.join(', ')}]. Check console for full structure.`
+        );
       }
 
       // Get address
@@ -88,12 +91,7 @@ export function WalletButton() {
 
     } catch (err: any) {
       console.error("Wallet connection failed:", err);
-      // Give a user-friendly message when wallet is locked or request is rejected
-      if (err.message && err.message.includes('Request failed')) {
-        setError('Wallet locked or request rejected. Please unlock it.');
-      } else {
-        setError(err.message || 'Connection rejected or failed');
-      }
+      setError(err.message || 'Connection rejected or failed');
       setConnecting(false);
     }
   };

@@ -179,20 +179,39 @@ export default function SubmitClaim() {
                   <span className="text-sm font-medium text-slate-300">Confidential Inputs</span>
                   <Badge variant="danger" className="bg-red-500/10 text-red-400 border-red-500/20">Never leaves device</Badge>
                 </div>
-                <div className="grid grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-xs font-medium mb-1.5 text-slate-400">Patient Age</label>
-                    <input type="number" className="w-full p-2.5 text-sm border border-slate-700/50 rounded-lg bg-slate-950/80 text-slate-100 focus:border-amber-500/50 outline-none transition-colors" value={privateData.age} onChange={e => setPrivateData({...privateData, age: Number(e.target.value)})} />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium mb-1.5 text-slate-400">Bill Amount (₹)</label>
-                    <input type="number" className="w-full p-2.5 text-sm border border-slate-700/50 rounded-lg bg-slate-950/80 text-slate-100 focus:border-amber-500/50 outline-none transition-colors" value={privateData.claim_amount} onChange={e => setPrivateData({...privateData, claim_amount: Number(e.target.value)})} />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium mb-1.5 text-slate-400">Hospitalization (Hrs)</label>
-                    <input type="number" className="w-full p-2.5 text-sm border border-slate-700/50 rounded-lg bg-slate-950/80 text-slate-100 focus:border-amber-500/50 outline-none transition-colors" value={privateData.hospitalization_hours} onChange={e => setPrivateData({...privateData, hospitalization_hours: Number(e.target.value)})} />
-                  </div>
-                </div>
+                {privateData.policyId ? (() => {
+                  const sel = policies.find(p => p.policyId === privateData.policyId);
+                  if (!sel) return null;
+                  
+                  const hasAge = sel.rules.some((r: any) => r.condition === 'age');
+                  const hasAmount = sel.rules.some((r: any) => r.condition === 'claim_amount');
+                  const hasHours = sel.rules.some((r: any) => r.condition === 'hospitalization_hours');
+                  
+                  return (
+                    <div className={`grid gap-4 ${[hasAge, hasAmount, hasHours].filter(Boolean).length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
+                      {hasAge && (
+                        <div>
+                          <label className="block text-xs font-medium mb-1.5 text-slate-400">Patient Age</label>
+                          <input type="number" className="w-full p-2.5 text-sm border border-slate-700/50 rounded-lg bg-slate-950/80 text-slate-100 focus:border-amber-500/50 outline-none transition-colors" value={privateData.age} onChange={e => setPrivateData({...privateData, age: Number(e.target.value)})} />
+                        </div>
+                      )}
+                      {hasAmount && (
+                        <div>
+                          <label className="block text-xs font-medium mb-1.5 text-slate-400">Bill Amount (₹)</label>
+                          <input type="number" className="w-full p-2.5 text-sm border border-slate-700/50 rounded-lg bg-slate-950/80 text-slate-100 focus:border-amber-500/50 outline-none transition-colors" value={privateData.claim_amount} onChange={e => setPrivateData({...privateData, claim_amount: Number(e.target.value)})} />
+                        </div>
+                      )}
+                      {hasHours && (
+                        <div>
+                          <label className="block text-xs font-medium mb-1.5 text-slate-400">Hospitalization (Hrs)</label>
+                          <input type="number" className="w-full p-2.5 text-sm border border-slate-700/50 rounded-lg bg-slate-950/80 text-slate-100 focus:border-amber-500/50 outline-none transition-colors" value={privateData.hospitalization_hours} onChange={e => setPrivateData({...privateData, hospitalization_hours: Number(e.target.value)})} />
+                        </div>
+                      )}
+                    </div>
+                  );
+                })() : (
+                  <p className="text-sm text-slate-500 italic">Select a policy to view required inputs.</p>
+                )}
               </div>
 
               {step === 1 && (

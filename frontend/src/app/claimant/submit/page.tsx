@@ -292,7 +292,7 @@ export default function SubmitClaim() {
         </div>
 
         {/* Right: Terminal Log */}
-        <div className="lg:col-span-2 h-[400px] lg:h-auto lg:sticky lg:top-24">
+        <div className="lg:col-span-2 h-[400px] lg:h-[calc(100vh-120px)] lg:sticky lg:top-24">
           <div className="bg-[#020617] border border-slate-800 rounded-2xl h-full flex flex-col overflow-hidden shadow-2xl relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent pointer-events-none"></div>
             

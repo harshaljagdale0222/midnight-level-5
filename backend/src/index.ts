@@ -42,16 +42,20 @@ app.post('/api/seed', async (req, res) => {
   await prisma.auditRecord.deleteMany();
   await prisma.policy.deleteMany();
   
-  const policy = await prisma.policy.create({
-    data: {
-      id: DEMO_POLICIES[0].policyId,
-      name: DEMO_POLICIES[0].name,
-      version: DEMO_POLICIES[0].version,
-      rulesJson: JSON.stringify(DEMO_POLICIES[0].rules)
-    }
-  });
+  const createdPolicies = [];
+  for (const p of DEMO_POLICIES) {
+    const policy = await prisma.policy.create({
+      data: {
+        id: p.policyId,
+        name: p.name,
+        version: p.version,
+        rulesJson: JSON.stringify(p.rules)
+      }
+    });
+    createdPolicies.push(policy);
+  }
   
-  res.json({ message: "Database seeded successfully", policy });
+  res.json({ message: "Database seeded successfully", policies: createdPolicies });
 });
 
 // Claims Submission (From Claimant)

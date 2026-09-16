@@ -3,7 +3,7 @@
 
 
 🚀 **Live Demo:** [https://midnight-level4-frontend.vercel.app](https://midnight-level4-frontend.vercel.app/)  
-🐦 **Product X Profile:** [https://x.com/Harshal_0222](https://x.com/Harshal_0222)  
+🐦 **Product X Profile:** [https://x.com/PrivacyGuard_ZK](https://x.com/PrivacyGuard_ZK)  
 📢 **Submission Tweet:** [View on X](https://x.com/Harshal_0222/status/2099940683096444931?s=20)
 
 **Verify Insurance Claims. Reveal Less.**
@@ -21,7 +21,7 @@ PrivacyGuard Insurance is a privacy-first web3 insurance claim verification syst
 - [x] **15 Meaningful Commits**: Clear, professional commit history.
 - [x] **Live Preprod Demo**: [https://midnight-level4-frontend.vercel.app](https://midnight-level4-frontend.vercel.app)
 - [x] **Midnight Contract Address**: `02b8d7a1c4e9f3b5d6e2f1a4c9b8d7e6f5a4c3b2d1e0f9a8b7c6d5e4f3a2b1c0`
-- [x] **Product X (Twitter) Profile**: [https://x.com/Harshal_0222](https://x.com/Harshal_0222)
+- [x] **Product X (Twitter) Profile**: [https://x.com/PrivacyGuard_ZK](https://x.com/PrivacyGuard_ZK)
 - [x] **Demo Video**: [https://www.loom.com/share/1915d97c336a466a9d186d6764dad876](https://www.loom.com/share/1915d97c336a466a9d186d6764dad876)
 
 ---

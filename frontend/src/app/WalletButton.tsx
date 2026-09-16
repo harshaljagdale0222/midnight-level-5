@@ -38,12 +38,12 @@ export function WalletButton() {
         }
       });
 
-      // @ts-ignore
+      let providerKey = 'mnLace';
       let walletProvider = window.midnight?.mnLace;
       
       // Fallback to 1AM if Lace is not found
       if (!walletProvider && window.midnight) {
-        const providerKey = Object.keys(window.midnight).find(key => key.toLowerCase().includes('1am')) 
+        providerKey = Object.keys(window.midnight).find(key => key.toLowerCase().includes('1am')) 
                             || Object.keys(window.midnight)[0];
         walletProvider = (window.midnight as any)[providerKey];
       }

@@ -41,7 +41,7 @@ export default function InsurerDashboard() {
 
   const handleVerify = async (claimId: string, proof: any) => {
     try {
-      await api.verifyClaim(claimId, { proofId: proof, verifierString: proof }, user.id);
+      await api.verifyClaim(claimId, { proofId: proof, verifierString: `zk-SNARK-mock-${proof}` }, user.id);
       fetchClaims();
     } catch (err) {
       console.error(err);

@@ -147,7 +147,20 @@ export default function SubmitClaim() {
                 <div className="bg-amber-950/30 border border-amber-500/20 p-3 rounded-lg mt-3 flex gap-3 items-start">
                   <span className="text-amber-400 text-lg leading-none mt-0.5">💡</span>
                   <p className="text-xs text-amber-300/80 leading-relaxed">
-                    <b>Hackathon Note:</b> For a successful proof, <b>Hospitalization must be &gt;= 24</b> and <b>Bill Amount &lt;= 5,00,000</b>.
+                    <b>Hackathon Note:</b> 
+                    {privateData.policyId ? (() => {
+                      const sel = policies.find(p => p.policyId === privateData.policyId);
+                      if (!sel) return " Select a policy to see its criteria.";
+                      const amtRule = sel.rules.find((r: any) => r.condition === 'claim_amount');
+                      const hrsRule = sel.rules.find((r: any) => r.condition === 'hospitalization_hours');
+                      const ageRule = sel.rules.find((r: any) => r.condition === 'age');
+                      
+                      let text = " For a successful proof,";
+                      if (hrsRule) text += ` Hospitalization must be ${hrsRule.operator} ${hrsRule.value} hours`;
+                      if (amtRule) text += ` and Bill Amount ${amtRule.operator} ₹${amtRule.value}`;
+                      if (ageRule) text += ` and Age ${ageRule.operator} ${ageRule.value}`;
+                      return text + ". Try breaking these rules to see a rejected proof!";
+                    })() : " Select a policy above to see its rules."}
                   </p>
                 </div>
               </div>
@@ -166,13 +179,17 @@ export default function SubmitClaim() {
                   <span className="text-sm font-medium text-slate-300">Confidential Inputs</span>
                   <Badge variant="danger" className="bg-red-500/10 text-red-400 border-red-500/20">Never leaves device</Badge>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-xs font-medium mb-1.5 text-slate-400">Patient Age</label>
+                    <input type="number" className="w-full p-2.5 text-sm border border-slate-700/50 rounded-lg bg-slate-950/80 text-slate-100 focus:border-amber-500/50 outline-none transition-colors" value={privateData.age} onChange={e => setPrivateData({...privateData, age: Number(e.target.value)})} />
+                  </div>
                   <div>
                     <label className="block text-xs font-medium mb-1.5 text-slate-400">Bill Amount (₹)</label>
                     <input type="number" className="w-full p-2.5 text-sm border border-slate-700/50 rounded-lg bg-slate-950/80 text-slate-100 focus:border-amber-500/50 outline-none transition-colors" value={privateData.claim_amount} onChange={e => setPrivateData({...privateData, claim_amount: Number(e.target.value)})} />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium mb-1.5 text-slate-400">Hospitalization (Hours)</label>
+                    <label className="block text-xs font-medium mb-1.5 text-slate-400">Hospitalization (Hrs)</label>
                     <input type="number" className="w-full p-2.5 text-sm border border-slate-700/50 rounded-lg bg-slate-950/80 text-slate-100 focus:border-amber-500/50 outline-none transition-colors" value={privateData.hospitalization_hours} onChange={e => setPrivateData({...privateData, hospitalization_hours: Number(e.target.value)})} />
                   </div>
                 </div>

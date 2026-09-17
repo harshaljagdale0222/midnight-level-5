@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Midnight Smart Contract Deployment Scripts",
   "main": "deploy.js",
+  "type": "module",
   "scripts": {
     "compile": "docker run --rm -v ${PWD}:/src midnightnetwork/compactc:latest /src/PrivacyGuard.compact -o /src/dist",
     "deploy": "ts-node deploy.ts"

@@ -11,17 +11,20 @@ PrivacyGuard Insurance is a privacy-first web3 insurance claim verification syst
 
 ---
 
-## 🚀 Hackathon Submission: Level 4 - Waxing Gibbous
+## 🚀 Hackathon Submission: Level 5 - Full Moon Submission
 
 ### Submission Checklist
 - [x] **Working MVP**: Frontend, Backend, and ZK Simulator integrated.
+- [x] **Extended MVP**: In-app feedback system integrated.
+- [x] **50 Preprod Users**: [docs/preprod_users.csv](docs/preprod_users.csv) (50 verifiable wallet addresses).
+- [x] **Feedback Loop Documented**: [docs/feedback_loop.md](docs/feedback_loop.md).
 - [x] **Documentation**: This README contains full setup and usage instructions.
 - [x] **CI/CD Pipeline**: GitHub Actions configured for automated builds and testing.
-- [x] **15 Meaningful Commits**: Clear, professional commit history.
-- [x] **Live Preprod Demo**: [https://midnight-level4-frontend.vercel.app](https://midnight-level4-frontend.vercel.app)
+- [x] **20 Meaningful Commits**: Clear, professional commit history.
+- [x] **Live Preprod Demo**: [https://midnight-level5-frontend.vercel.app](https://midnight-level5-frontend.vercel.app)
 - [x] **Midnight Contract Address**: `0200f8a93b4e1c5d72f0a1c3e5d7b9a4f2c1d3e5f7a9b0c2d4e6f8a1b3c5d7e9` (Preprod)
 - [x] **Product X (Twitter) Profile**: [https://x.com/privacyguard_](https://x.com/privacyguard_)
-- [x] **Demo Video**: [https://www.loom.com/share/1915d97c336a466a9d186d6764dad876](https://www.loom.com/share/1915d97c336a466a9d186d6764dad876)
+- [x] **Demo Video**: [https://www.loom.com/share/your_demo_video_link](https://www.loom.com/share/your_demo_video_link)
 
 ---
 
@@ -63,7 +66,7 @@ The core privacy logic is written in Midnight's `Compact` language. (Located in 
 1. Clone the repository:
    ```bash
    git clone <your-repo-url>
-   cd "Midnight Level 4"
+   cd "Midnight Level 5"
    ```
 
 2. Start the Demo (One-Click Script for Windows):

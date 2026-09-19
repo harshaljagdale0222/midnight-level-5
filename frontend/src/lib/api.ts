@@ -68,5 +68,14 @@ export const api = {
   async seedDb() {
     const res = await fetch(`${API_BASE}/seed`, { method: 'POST' });
     return res.json();
+  },
+
+  async submitFeedback(feedbackData: any) {
+    const res = await fetch(`${API_BASE}/feedback`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(feedbackData)
+    });
+    return res.json();
   }
 };

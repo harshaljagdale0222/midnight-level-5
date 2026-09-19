@@ -182,6 +182,14 @@ app.post('/api/zk/generate', async (req, res) => {
   res.json(result);
 });
 
+// Feedback Loop Mock Endpoint
+app.post('/api/feedback', async (req, res) => {
+  const { message, url, userAgent } = req.body;
+  console.log(`[Feedback] from ${url}: ${message}`);
+  // In a real app, save this to DB
+  res.json({ success: true, message: "Feedback received" });
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Backend running on port ${PORT}`);

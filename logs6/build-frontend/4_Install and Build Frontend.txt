@@ -1,0 +1,41 @@
+﻿2026-09-15T17:56:34.8217224Z ##[group]Run rm package.json
+2026-09-15T17:56:34.8217574Z [36;1mrm package.json[0m
+2026-09-15T17:56:34.8217792Z [36;1mcd frontend[0m
+2026-09-15T17:56:34.8218059Z [36;1mnpm install --no-package-lock --legacy-peer-deps[0m
+2026-09-15T17:56:34.8218346Z [36;1mnpm run build[0m
+2026-09-15T17:56:34.8256437Z shell: /usr/bin/bash -e {0}
+2026-09-15T17:56:34.8256740Z ##[endgroup]
+2026-09-15T17:56:52.0598088Z npm warn EBADENGINE Unsupported engine {
+2026-09-15T17:56:52.0598666Z npm warn EBADENGINE   package: 'next@16.3.4',
+2026-09-15T17:56:52.0599056Z npm warn EBADENGINE   required: { node: '>=20.9.0' },
+2026-09-15T17:56:52.0599442Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-09-15T17:56:52.0600078Z npm warn EBADENGINE }
+2026-09-15T17:56:52.0600340Z npm warn EBADENGINE Unsupported engine {
+2026-09-15T17:56:52.0600672Z npm warn EBADENGINE   package: '@tailwindcss/oxide@4.3.3',
+2026-09-15T17:56:52.0601017Z npm warn EBADENGINE   required: { node: '>= 20' },
+2026-09-15T17:56:52.0601370Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-09-15T17:56:52.0601740Z npm warn EBADENGINE }
+2026-09-15T17:56:52.0611063Z npm warn EBADENGINE Unsupported engine {
+2026-09-15T17:56:52.0611622Z npm warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+2026-09-15T17:56:52.0612118Z npm warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+2026-09-15T17:56:52.0612522Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-09-15T17:56:52.0612814Z npm warn EBADENGINE }
+2026-09-15T17:56:52.0614559Z npm warn EBADENGINE Unsupported engine {
+2026-09-15T17:56:52.0615119Z npm warn EBADENGINE   package: 'brace-expansion@5.0.12',
+2026-09-15T17:56:52.0615562Z npm warn EBADENGINE   required: { node: '20 || >=22' },
+2026-09-15T17:56:52.0615941Z npm warn EBADENGINE   current: { node: 'v18.20.8', npm: '10.8.2' }
+2026-09-15T17:56:52.0616217Z npm warn EBADENGINE }
+2026-09-15T17:56:55.5333283Z npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+2026-09-15T17:56:59.3766733Z 
+2026-09-15T17:56:59.3768035Z added 360 packages, and audited 361 packages in 24s
+2026-09-15T17:56:59.3768487Z 
+2026-09-15T17:56:59.3768753Z 144 packages are looking for funding
+2026-09-15T17:56:59.3769159Z   run `npm fund` for details
+2026-09-15T17:56:59.3775451Z 
+2026-09-15T17:56:59.3776143Z found 0 vulnerabilities
+2026-09-15T17:56:59.4938820Z 
+2026-09-15T17:56:59.4944480Z > frontend@0.1.0 build
+2026-09-15T17:56:59.4944857Z > next build
+2026-09-15T17:56:59.4945022Z 
+2026-09-15T17:56:59.5839923Z You are using Node.js 18.20.8. For Next.js, Node.js version ">=20.9.0" is required.
+2026-09-15T17:56:59.5942496Z ##[error]Process completed with exit code 1.

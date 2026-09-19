@@ -1,0 +1,33 @@
+﻿2026-09-15T17:56:28.6037367Z Current runner version: '2.337.0'
+2026-09-15T17:56:28.6059141Z ##[group]Runner Image Provisioner
+2026-09-15T17:56:28.6060079Z Hosted Compute Agent
+2026-09-15T17:56:28.6060637Z Version: 20260828.587
+2026-09-15T17:56:28.6061162Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-15T17:56:28.6061734Z Build Date: 2026-08-28T16:44:25Z
+2026-09-15T17:56:28.6062377Z Worker ID: {48f8a4b7-09ce-4a08-9f15-eef78a352780}
+2026-09-15T17:56:28.6062999Z Azure Region: westcentralus
+2026-09-15T17:56:28.6063507Z ##[endgroup]
+2026-09-15T17:56:28.6064685Z ##[group]Operating System
+2026-09-15T17:56:28.6065195Z Ubuntu
+2026-09-15T17:56:28.6065776Z 24.04.5
+2026-09-15T17:56:28.6066205Z LTS
+2026-09-15T17:56:28.6066656Z ##[endgroup]
+2026-09-15T17:56:28.6067128Z ##[group]Runner Image
+2026-09-15T17:56:28.6067713Z Image: ubuntu-24.04
+2026-09-15T17:56:28.6068219Z Version: 20260907.300.1
+2026-09-15T17:56:28.6069101Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-15T17:56:28.6070678Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260907.300
+2026-09-15T17:56:28.6071456Z ##[endgroup]
+2026-09-15T17:56:28.6072493Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T17:56:28.6074194Z Contents: read
+2026-09-15T17:56:28.6074756Z Metadata: read
+2026-09-15T17:56:28.6075222Z Packages: read
+2026-09-15T17:56:28.6075663Z ##[endgroup]
+2026-09-15T17:56:28.6077413Z Secret source: Actions
+2026-09-15T17:56:28.6078479Z Cache mode: write
+2026-09-15T17:56:28.6079097Z Prepare workflow directory
+2026-09-15T17:56:28.6360871Z Prepare all required actions
+2026-09-15T17:56:28.6413590Z Getting action download info
+2026-09-15T17:56:28.9215813Z Download action repository 'actions/checkout@v3' (SHA:a37ce9120846195fa4ece8f58b268e6043cb2f26)
+2026-09-15T17:56:29.0164315Z Download action repository 'actions/setup-node@v3' (SHA:3235b876344d2a9aa001b8d1453c930bba69e610)
+2026-09-15T17:56:29.4035165Z Complete job name: build-frontend

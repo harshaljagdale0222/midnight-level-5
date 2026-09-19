@@ -1,0 +1,297 @@
+﻿2026-09-15T17:50:32.6443895Z Current runner version: '2.337.0'
+2026-09-15T17:50:32.6477452Z ##[group]Runner Image Provisioner
+2026-09-15T17:50:32.6478834Z Hosted Compute Agent
+2026-09-15T17:50:32.6480163Z Version: 20260828.587
+2026-09-15T17:50:32.6481386Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-15T17:50:32.6482538Z Build Date: 2026-08-28T16:44:25Z
+2026-09-15T17:50:32.6483557Z Worker ID: {a517746e-78fe-41de-9472-be016bd9a3ba}
+2026-09-15T17:50:32.6484890Z Azure Region: eastus2
+2026-09-15T17:50:32.6485847Z ##[endgroup]
+2026-09-15T17:50:32.6487804Z ##[group]Operating System
+2026-09-15T17:50:32.6488816Z Ubuntu
+2026-09-15T17:50:32.6489955Z 24.04.5
+2026-09-15T17:50:32.6490960Z LTS
+2026-09-15T17:50:32.6491852Z ##[endgroup]
+2026-09-15T17:50:32.6492685Z ##[group]Runner Image
+2026-09-15T17:50:32.6493793Z Image: ubuntu-24.04
+2026-09-15T17:50:32.6494665Z Version: 20260907.300.1
+2026-09-15T17:50:32.6496796Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-15T17:50:32.6499645Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260907.300
+2026-09-15T17:50:32.6501268Z ##[endgroup]
+2026-09-15T17:50:32.6503125Z ##[group]GITHUB_TOKEN Permissions
+2026-09-15T17:50:32.6506222Z Contents: read
+2026-09-15T17:50:32.6507083Z Metadata: read
+2026-09-15T17:50:32.6508086Z Packages: read
+2026-09-15T17:50:32.6508950Z ##[endgroup]
+2026-09-15T17:50:32.6512637Z Secret source: Actions
+2026-09-15T17:50:32.6514094Z Cache mode: write
+2026-09-15T17:50:32.6515725Z Prepare workflow directory
+2026-09-15T17:50:32.6962224Z Prepare all required actions
+2026-09-15T17:50:32.7028606Z Getting action download info
+2026-09-15T17:50:32.9172541Z Download action repository 'actions/checkout@v3' (SHA:a37ce9120846195fa4ece8f58b268e6043cb2f26)
+2026-09-15T17:50:33.0813114Z Download action repository 'actions/setup-node@v3' (SHA:3235b876344d2a9aa001b8d1453c930bba69e610)
+2026-09-15T17:50:33.3310007Z Complete job name: build-frontend
+2026-09-15T17:50:33.4039998Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-15T17:50:33.4048748Z ##[group]Run actions/checkout@v3
+2026-09-15T17:50:33.4049640Z with:
+2026-09-15T17:50:33.4050151Z   repository: harshaljagdale0222/midnight-level4
+2026-09-15T17:50:33.4054382Z   token: ***
+2026-09-15T17:50:33.4054833Z   ssh-strict: true
+2026-09-15T17:50:33.4055308Z   persist-credentials: true
+2026-09-15T17:50:33.4055810Z   clean: true
+2026-09-15T17:50:33.4056267Z   sparse-checkout-cone-mode: true
+2026-09-15T17:50:33.4056796Z   fetch-depth: 1
+2026-09-15T17:50:33.4057235Z   fetch-tags: false
+2026-09-15T17:50:33.4057684Z   lfs: false
+2026-09-15T17:50:33.4058104Z   submodules: false
+2026-09-15T17:50:33.4058555Z   set-safe-directory: true
+2026-09-15T17:50:33.4059109Z   allow-unsafe-pr-checkout: false
+2026-09-15T17:50:33.4060265Z ##[endgroup]
+2026-09-15T17:50:33.4810269Z (node:2131) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-15T17:50:33.4811661Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-15T17:50:33.4895572Z Syncing repository: harshaljagdale0222/midnight-level4
+2026-09-15T17:50:33.4897416Z ##[group]Getting Git version info
+2026-09-15T17:50:33.4898187Z Working directory is '/home/runner/work/midnight-level4/midnight-level4'
+2026-09-15T17:50:33.4899786Z [command]/usr/bin/git version
+2026-09-15T17:50:33.4940293Z git version 2.55.0
+2026-09-15T17:50:33.4960421Z ##[endgroup]
+2026-09-15T17:50:33.4974912Z Temporarily overriding HOME='/home/runner/work/_temp/0426152d-9d5f-4bd4-bff7-dbb001cb054c' before making global git config changes
+2026-09-15T17:50:33.4977181Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-15T17:50:33.4979704Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/midnight-level4/midnight-level4
+2026-09-15T17:50:33.5024989Z Deleting the contents of '/home/runner/work/midnight-level4/midnight-level4'
+2026-09-15T17:50:33.5029341Z ##[group]Initializing the repository
+2026-09-15T17:50:33.5033322Z [command]/usr/bin/git init /home/runner/work/midnight-level4/midnight-level4
+2026-09-15T17:50:33.5124260Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-15T17:50:33.5125272Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-15T17:50:33.5126564Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-15T17:50:33.5127528Z hint: call:
+2026-09-15T17:50:33.5128110Z hint:
+2026-09-15T17:50:33.5128941Z hint: 	git config --global init.defaultBranch <name>
+2026-09-15T17:50:33.5130157Z hint:
+2026-09-15T17:50:33.5131130Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-15T17:50:33.5132625Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-15T17:50:33.5133828Z hint:
+2026-09-15T17:50:33.5134506Z hint: 	git branch -m <name>
+2026-09-15T17:50:33.5135249Z hint:
+2026-09-15T17:50:33.5136269Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-15T17:50:33.5138021Z Initialized empty Git repository in /home/runner/work/midnight-level4/midnight-level4/.git/
+2026-09-15T17:50:33.5141008Z [command]/usr/bin/git remote add origin https://github.com/harshaljagdale0222/midnight-level4
+2026-09-15T17:50:33.5180162Z ##[endgroup]
+2026-09-15T17:50:33.5181366Z ##[group]Disabling automatic garbage collection
+2026-09-15T17:50:33.5183331Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-15T17:50:33.5212371Z ##[endgroup]
+2026-09-15T17:50:33.5213531Z ##[group]Setting up auth
+2026-09-15T17:50:33.5218408Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-15T17:50:33.5250629Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-15T17:50:33.5580585Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-15T17:50:33.5609851Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-15T17:50:33.5845902Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-15T17:50:33.5881677Z ##[endgroup]
+2026-09-15T17:50:33.5882453Z ##[group]Fetching the repository
+2026-09-15T17:50:33.5888988Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +a077c523347e14f4b6388e181e5cfea327ebf3c6:refs/remotes/origin/main
+2026-09-15T17:50:33.8180852Z remote: Enumerating objects: 77, done.        
+2026-09-15T17:50:33.8182207Z remote: Counting objects:   1% (1/77)        
+2026-09-15T17:50:33.8183122Z remote: Counting objects:   2% (2/77)        
+2026-09-15T17:50:33.8183787Z remote: Counting objects:   3% (3/77)        
+2026-09-15T17:50:33.8184654Z remote: Counting objects:   5% (4/77)        
+2026-09-15T17:50:33.8185576Z remote: Counting objects:   6% (5/77)        
+2026-09-15T17:50:33.8186507Z remote: Counting objects:   7% (6/77)        
+2026-09-15T17:50:33.8187422Z remote: Counting objects:   9% (7/77)        
+2026-09-15T17:50:33.8188345Z remote: Counting objects:  10% (8/77)        
+2026-09-15T17:50:33.8189072Z remote: Counting objects:  11% (9/77)        
+2026-09-15T17:50:33.8189828Z remote: Counting objects:  12% (10/77)        
+2026-09-15T17:50:33.8190442Z remote: Counting objects:  14% (11/77)        
+2026-09-15T17:50:33.8191045Z remote: Counting objects:  15% (12/77)        
+2026-09-15T17:50:33.8191693Z remote: Counting objects:  16% (13/77)        
+2026-09-15T17:50:33.8192565Z remote: Counting objects:  18% (14/77)        
+2026-09-15T17:50:33.8193182Z remote: Counting objects:  19% (15/77)        
+2026-09-15T17:50:33.8193787Z remote: Counting objects:  20% (16/77)        
+2026-09-15T17:50:33.8194372Z remote: Counting objects:  22% (17/77)        
+2026-09-15T17:50:33.8194968Z remote: Counting objects:  23% (18/77)        
+2026-09-15T17:50:33.8195557Z remote: Counting objects:  24% (19/77)        
+2026-09-15T17:50:33.8196147Z remote: Counting objects:  25% (20/77)        
+2026-09-15T17:50:33.8196737Z remote: Counting objects:  27% (21/77)        
+2026-09-15T17:50:33.8197370Z remote: Counting objects:  28% (22/77)        
+2026-09-15T17:50:33.8197960Z remote: Counting objects:  29% (23/77)        
+2026-09-15T17:50:33.8198546Z remote: Counting objects:  31% (24/77)        
+2026-09-15T17:50:33.8199268Z remote: Counting objects:  32% (25/77)        
+2026-09-15T17:50:33.8199861Z remote: Counting objects:  33% (26/77)        
+2026-09-15T17:50:33.8200453Z remote: Counting objects:  35% (27/77)        
+2026-09-15T17:50:33.8201048Z remote: Counting objects:  36% (28/77)        
+2026-09-15T17:50:33.8201642Z remote: Counting objects:  37% (29/77)        
+2026-09-15T17:50:33.8202262Z remote: Counting objects:  38% (30/77)        
+2026-09-15T17:50:33.8202842Z remote: Counting objects:  40% (31/77)        
+2026-09-15T17:50:33.8203575Z remote: Counting objects:  41% (32/77)        
+2026-09-15T17:50:33.8204166Z remote: Counting objects:  42% (33/77)        
+2026-09-15T17:50:33.8204752Z remote: Counting objects:  44% (34/77)        
+2026-09-15T17:50:33.8205342Z remote: Counting objects:  45% (35/77)        
+2026-09-15T17:50:33.8205925Z remote: Counting objects:  46% (36/77)        
+2026-09-15T17:50:33.8206507Z remote: Counting objects:  48% (37/77)        
+2026-09-15T17:50:33.8207090Z remote: Counting objects:  49% (38/77)        
+2026-09-15T17:50:33.8207678Z remote: Counting objects:  50% (39/77)        
+2026-09-15T17:50:33.8208434Z remote: Counting objects:  51% (40/77)        
+2026-09-15T17:50:33.8209038Z remote: Counting objects:  53% (41/77)        
+2026-09-15T17:50:33.8209744Z remote: Counting objects:  54% (42/77)        
+2026-09-15T17:50:33.8210347Z remote: Counting objects:  55% (43/77)        
+2026-09-15T17:50:33.8210952Z remote: Counting objects:  57% (44/77)        
+2026-09-15T17:50:33.8211542Z remote: Counting objects:  58% (45/77)        
+2026-09-15T17:50:33.8212125Z remote: Counting objects:  59% (46/77)        
+2026-09-15T17:50:33.8212711Z remote: Counting objects:  61% (47/77)        
+2026-09-15T17:50:33.8213311Z remote: Counting objects:  62% (48/77)        
+2026-09-15T17:50:33.8213915Z remote: Counting objects:  63% (49/77)        
+2026-09-15T17:50:33.8214514Z remote: Counting objects:  64% (50/77)        
+2026-09-15T17:50:33.8215109Z remote: Counting objects:  66% (51/77)        
+2026-09-15T17:50:33.8215694Z remote: Counting objects:  67% (52/77)        
+2026-09-15T17:50:33.8216279Z remote: Counting objects:  68% (53/77)        
+2026-09-15T17:50:33.8216875Z remote: Counting objects:  70% (54/77)        
+2026-09-15T17:50:33.8217512Z remote: Counting objects:  71% (55/77)        
+2026-09-15T17:50:33.8218116Z remote: Counting objects:  72% (56/77)        
+2026-09-15T17:50:33.8218707Z remote: Counting objects:  74% (57/77)        
+2026-09-15T17:50:33.8219451Z remote: Counting objects:  75% (58/77)        
+2026-09-15T17:50:33.8220331Z remote: Counting objects:  76% (59/77)        
+2026-09-15T17:50:33.8221262Z remote: Counting objects:  77% (60/77)        
+2026-09-15T17:50:33.8222205Z remote: Counting objects:  79% (61/77)        
+2026-09-15T17:50:33.8222947Z remote: Counting objects:  80% (62/77)        
+2026-09-15T17:50:33.8223549Z remote: Counting objects:  81% (63/77)        
+2026-09-15T17:50:33.8224140Z remote: Counting objects:  83% (64/77)        
+2026-09-15T17:50:33.8224747Z remote: Counting objects:  84% (65/77)        
+2026-09-15T17:50:33.8225342Z remote: Counting objects:  85% (66/77)        
+2026-09-15T17:50:33.8225943Z remote: Counting objects:  87% (67/77)        
+2026-09-15T17:50:33.8226722Z remote: Counting objects:  88% (68/77)        
+2026-09-15T17:50:33.8227315Z remote: Counting objects:  89% (69/77)        
+2026-09-15T17:50:33.8227901Z remote: Counting objects:  90% (70/77)        
+2026-09-15T17:50:33.8228487Z remote: Counting objects:  92% (71/77)        
+2026-09-15T17:50:33.8229078Z remote: Counting objects:  93% (72/77)        
+2026-09-15T17:50:33.8229830Z remote: Counting objects:  94% (73/77)        
+2026-09-15T17:50:33.8230422Z remote: Counting objects:  96% (74/77)        
+2026-09-15T17:50:33.8231332Z remote: Counting objects:  97% (75/77)        
+2026-09-15T17:50:33.8232238Z remote: Counting objects:  98% (76/77)        
+2026-09-15T17:50:33.8232889Z remote: Counting objects: 100% (77/77)        
+2026-09-15T17:50:33.8233530Z remote: Counting objects: 100% (77/77), done.        
+2026-09-15T17:50:33.8234178Z remote: Compressing objects:   1% (1/62)        
+2026-09-15T17:50:33.8234801Z remote: Compressing objects:   3% (2/62)        
+2026-09-15T17:50:33.8235410Z remote: Compressing objects:   4% (3/62)        
+2026-09-15T17:50:33.8236036Z remote: Compressing objects:   6% (4/62)        
+2026-09-15T17:50:33.8236637Z remote: Compressing objects:   8% (5/62)        
+2026-09-15T17:50:33.8237241Z remote: Compressing objects:   9% (6/62)        
+2026-09-15T17:50:33.8237855Z remote: Compressing objects:  11% (7/62)        
+2026-09-15T17:50:33.8238461Z remote: Compressing objects:  12% (8/62)        
+2026-09-15T17:50:33.8239065Z remote: Compressing objects:  14% (9/62)        
+2026-09-15T17:50:33.8240076Z remote: Compressing objects:  16% (10/62)        
+2026-09-15T17:50:33.8240835Z remote: Compressing objects:  17% (11/62)        
+2026-09-15T17:50:33.8241459Z remote: Compressing objects:  19% (12/62)        
+2026-09-15T17:50:33.8242082Z remote: Compressing objects:  20% (13/62)        
+2026-09-15T17:50:33.8242697Z remote: Compressing objects:  22% (14/62)        
+2026-09-15T17:50:33.8243533Z remote: Compressing objects:  24% (15/62)        
+2026-09-15T17:50:33.8244154Z remote: Compressing objects:  25% (16/62)        
+2026-09-15T17:50:33.8244777Z remote: Compressing objects:  27% (17/62)        
+2026-09-15T17:50:33.8245395Z remote: Compressing objects:  29% (18/62)        
+2026-09-15T17:50:33.8246006Z remote: Compressing objects:  30% (19/62)        
+2026-09-15T17:50:33.8246632Z remote: Compressing objects:  32% (20/62)        
+2026-09-15T17:50:33.8247240Z remote: Compressing objects:  33% (21/62)        
+2026-09-15T17:50:33.8247846Z remote: Compressing objects:  35% (22/62)        
+2026-09-15T17:50:33.8248459Z remote: Compressing objects:  37% (23/62)        
+2026-09-15T17:50:33.8249068Z remote: Compressing objects:  38% (24/62)        
+2026-09-15T17:50:33.8249798Z remote: Compressing objects:  40% (25/62)        
+2026-09-15T17:50:33.8250412Z remote: Compressing objects:  41% (26/62)        
+2026-09-15T17:50:33.8251027Z remote: Compressing objects:  43% (27/62)        
+2026-09-15T17:50:33.8251651Z remote: Compressing objects:  45% (28/62)        
+2026-09-15T17:50:33.8252271Z remote: Compressing objects:  46% (29/62)        
+2026-09-15T17:50:33.8252882Z remote: Compressing objects:  48% (30/62)        
+2026-09-15T17:50:33.8253492Z remote: Compressing objects:  50% (31/62)        
+2026-09-15T17:50:33.8254105Z remote: Compressing objects:  51% (32/62)        
+2026-09-15T17:50:33.8254715Z remote: Compressing objects:  53% (33/62)        
+2026-09-15T17:50:33.8255320Z remote: Compressing objects:  54% (34/62)        
+2026-09-15T17:50:33.8255925Z remote: Compressing objects:  56% (35/62)        
+2026-09-15T17:50:33.8256536Z remote: Compressing objects:  58% (36/62)        
+2026-09-15T17:50:33.8257148Z remote: Compressing objects:  59% (37/62)        
+2026-09-15T17:50:33.8257765Z remote: Compressing objects:  61% (38/62)        
+2026-09-15T17:50:33.8258391Z remote: Compressing objects:  62% (39/62)        
+2026-09-15T17:50:33.8258997Z remote: Compressing objects:  64% (40/62)        
+2026-09-15T17:50:33.8259769Z remote: Compressing objects:  66% (41/62)        
+2026-09-15T17:50:33.8260382Z remote: Compressing objects:  67% (42/62)        
+2026-09-15T17:50:33.8261192Z remote: Compressing objects:  69% (43/62)        
+2026-09-15T17:50:33.8261800Z remote: Compressing objects:  70% (44/62)        
+2026-09-15T17:50:33.8262417Z remote: Compressing objects:  72% (45/62)        
+2026-09-15T17:50:33.8263031Z remote: Compressing objects:  74% (46/62)        
+2026-09-15T17:50:33.8263660Z remote: Compressing objects:  75% (47/62)        
+2026-09-15T17:50:33.8264267Z remote: Compressing objects:  77% (48/62)        
+2026-09-15T17:50:33.8264880Z remote: Compressing objects:  79% (49/62)        
+2026-09-15T17:50:33.8265486Z remote: Compressing objects:  80% (50/62)        
+2026-09-15T17:50:33.8266101Z remote: Compressing objects:  82% (51/62)        
+2026-09-15T17:50:33.8266711Z remote: Compressing objects:  83% (52/62)        
+2026-09-15T17:50:33.8267318Z remote: Compressing objects:  85% (53/62)        
+2026-09-15T17:50:33.8267936Z remote: Compressing objects:  87% (54/62)        
+2026-09-15T17:50:33.8268552Z remote: Compressing objects:  88% (55/62)        
+2026-09-15T17:50:33.8269492Z remote: Compressing objects:  90% (56/62)        
+2026-09-15T17:50:33.8270110Z remote: Compressing objects:  91% (57/62)        
+2026-09-15T17:50:33.8270719Z remote: Compressing objects:  93% (58/62)        
+2026-09-15T17:50:33.8271329Z remote: Compressing objects:  95% (59/62)        
+2026-09-15T17:50:33.8272145Z remote: Compressing objects:  96% (60/62)        
+2026-09-15T17:50:33.8273192Z remote: Compressing objects:  98% (61/62)        
+2026-09-15T17:50:33.8274194Z remote: Compressing objects: 100% (62/62)        
+2026-09-15T17:50:33.8275255Z remote: Compressing objects: 100% (62/62), done.        
+2026-09-15T17:50:33.8328525Z remote: Total 77 (delta 1), reused 72 (delta 1), pack-reused 0 (from 0)        
+2026-09-15T17:50:33.8466492Z From https://github.com/harshaljagdale0222/midnight-level4
+2026-09-15T17:50:33.8467867Z  * [new ref]         a077c523347e14f4b6388e181e5cfea327ebf3c6 -> origin/main
+2026-09-15T17:50:33.8472705Z ##[endgroup]
+2026-09-15T17:50:33.8473485Z ##[group]Determining the checkout info
+2026-09-15T17:50:33.8475265Z ##[endgroup]
+2026-09-15T17:50:33.8476175Z ##[group]Checking out the ref
+2026-09-15T17:50:33.8480695Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-09-15T17:50:33.8584908Z Switched to a new branch 'main'
+2026-09-15T17:50:33.8590410Z branch 'main' set up to track 'origin/main'.
+2026-09-15T17:50:33.8595736Z ##[endgroup]
+2026-09-15T17:50:33.8633697Z [command]/usr/bin/git log -1 --format='%H'
+2026-09-15T17:50:33.8657216Z 'a077c523347e14f4b6388e181e5cfea327ebf3c6'
+2026-09-15T17:50:33.8938651Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-15T17:50:33.8941457Z ##[group]Run actions/setup-node@v3
+2026-09-15T17:50:33.8941998Z with:
+2026-09-15T17:50:33.8942414Z   node-version: 18.x
+2026-09-15T17:50:33.8942861Z   always-auth: false
+2026-09-15T17:50:33.8943305Z   check-latest: false
+2026-09-15T17:50:33.8947382Z   token: ***
+2026-09-15T17:50:33.9019853Z ##[endgroup]
+2026-09-15T17:50:34.0577539Z Attempting to download 18.x...
+2026-09-15T17:50:34.0689067Z (node:2213) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-15T17:50:34.0691909Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-15T17:50:34.4313233Z Acquiring 18.20.8 - x64 from https://github.com/actions/node-versions/releases/download/18.20.8-14110393767/node-18.20.8-linux-x64.tar.gz
+2026-09-15T17:50:34.7988814Z Extracting ...
+2026-09-15T17:50:34.8108949Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword -C /home/runner/work/_temp/baa240ac-ff97-4ba7-bd64-23a3ff7fe22c -f /home/runner/work/_temp/56f98f41-8890-4243-9d03-0bddaddb7d30
+2026-09-15T17:50:35.8588562Z Adding to the cache ...
+2026-09-15T17:50:37.4038706Z ##[group]Environment details
+2026-09-15T17:50:37.6309572Z node: v18.20.8
+2026-09-15T17:50:37.6310143Z npm: 10.8.2
+2026-09-15T17:50:37.6310640Z yarn: 1.22.22
+2026-09-15T17:50:37.6311485Z ##[endgroup]
+2026-09-15T17:50:37.6513423Z ##[group]Run npm install --legacy-peer-deps
+2026-09-15T17:50:37.6513961Z [36;1mnpm install --legacy-peer-deps[0m
+2026-09-15T17:50:37.6514349Z [36;1mnpm run build[0m
+2026-09-15T17:50:37.6561958Z shell: /usr/bin/bash -e {0}
+2026-09-15T17:50:37.6562300Z ##[endgroup]
+2026-09-15T17:50:38.3788690Z npm error code E404
+2026-09-15T17:50:38.3790115Z npm error 404 Not Found - GET https://registry.npmjs.org/@midnight-network%2fcompact-js - Not found
+2026-09-15T17:50:38.3790686Z npm error 404
+2026-09-15T17:50:38.3791152Z npm error 404  '@midnight-network/compact-js@^1.0.0' is not in this registry.
+2026-09-15T17:50:38.3791559Z npm error 404
+2026-09-15T17:50:38.3791882Z npm error 404 Note that you can also install from a
+2026-09-15T17:50:38.3792406Z npm error 404 tarball, folder, http url, or git url.
+2026-09-15T17:50:38.3796289Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-09-15T17_50_37_733Z-debug-0.log
+2026-09-15T17:50:38.3884910Z ##[error]Process completed with exit code 1.
+2026-09-15T17:50:38.4018524Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-15T17:50:38.4019919Z Post job cleanup.
+2026-09-15T17:50:38.4719603Z (node:2261) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-15T17:50:38.4720584Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-15T17:50:38.4748382Z [command]/usr/bin/git version
+2026-09-15T17:50:38.4784813Z git version 2.55.0
+2026-09-15T17:50:38.4820460Z Temporarily overriding HOME='/home/runner/work/_temp/3e807e4a-ed4a-4ba9-aebf-7565335e6288' before making global git config changes
+2026-09-15T17:50:38.4822254Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-15T17:50:38.4825414Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/midnight-level4/midnight-level4
+2026-09-15T17:50:38.4861028Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-15T17:50:38.4894034Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-15T17:50:38.5131513Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-15T17:50:38.5154979Z http.https://github.com/.extraheader
+2026-09-15T17:50:38.5164240Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-09-15T17:50:38.5194819Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-15T17:50:38.5563370Z Cleaning up orphan processes
+2026-09-15T17:50:38.5865950Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v3, actions/setup-node@v3. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

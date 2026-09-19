@@ -1,0 +1,14 @@
+﻿2026-09-15T17:50:37.6513378Z ##[group]Run npm install --legacy-peer-deps
+2026-09-15T17:50:37.6513957Z [36;1mnpm install --legacy-peer-deps[0m
+2026-09-15T17:50:37.6514329Z [36;1mnpm run build[0m
+2026-09-15T17:50:37.6561935Z shell: /usr/bin/bash -e {0}
+2026-09-15T17:50:37.6562296Z ##[endgroup]
+2026-09-15T17:50:38.3788607Z npm error code E404
+2026-09-15T17:50:38.3790104Z npm error 404 Not Found - GET https://registry.npmjs.org/@midnight-network%2fcompact-js - Not found
+2026-09-15T17:50:38.3790681Z npm error 404
+2026-09-15T17:50:38.3791146Z npm error 404  '@midnight-network/compact-js@^1.0.0' is not in this registry.
+2026-09-15T17:50:38.3791555Z npm error 404
+2026-09-15T17:50:38.3791879Z npm error 404 Note that you can also install from a
+2026-09-15T17:50:38.3792401Z npm error 404 tarball, folder, http url, or git url.
+2026-09-15T17:50:38.3796280Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-09-15T17_50_37_733Z-debug-0.log
+2026-09-15T17:50:38.3884798Z ##[error]Process completed with exit code 1.

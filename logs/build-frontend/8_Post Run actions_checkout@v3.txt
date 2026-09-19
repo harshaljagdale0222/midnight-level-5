@@ -1,0 +1,15 @@
+﻿2026-09-15T17:50:38.4018496Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-15T17:50:38.4019914Z Post job cleanup.
+2026-09-15T17:50:38.4719501Z (node:2261) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-15T17:50:38.4720577Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-15T17:50:38.4748355Z [command]/usr/bin/git version
+2026-09-15T17:50:38.4784783Z git version 2.55.0
+2026-09-15T17:50:38.4820432Z Temporarily overriding HOME='/home/runner/work/_temp/3e807e4a-ed4a-4ba9-aebf-7565335e6288' before making global git config changes
+2026-09-15T17:50:38.4822160Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-15T17:50:38.4825393Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/midnight-level4/midnight-level4
+2026-09-15T17:50:38.4861002Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-15T17:50:38.4894007Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-15T17:50:38.5131473Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-15T17:50:38.5154943Z http.https://github.com/.extraheader
+2026-09-15T17:50:38.5164222Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-09-15T17:50:38.5194766Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"

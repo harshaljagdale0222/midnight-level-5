@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: midnight-level-5-backend
+    env: node
+    buildCommand: npm install && npx prisma generate --schema=database/prisma/schema.prisma && npx prisma db push --schema=database/prisma/schema.prisma
+    startCommand: npm run dev --workspace=backend
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production

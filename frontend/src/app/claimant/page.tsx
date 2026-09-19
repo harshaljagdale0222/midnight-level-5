@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { api } from '@/lib/api';
 import { Card, Button, Badge, StatusIcon } from '@/components/ui';
 import { Shield, Lock, FileText, Plus } from 'lucide-react';
+import { FeedbackForm } from '@/components/FeedbackForm';
 
 export default function ClaimantDashboard() {
   const router = useRouter();
@@ -133,6 +134,7 @@ export default function ClaimantDashboard() {
           </Card>
         </div>
       </div>
+      <FeedbackForm />
     </div>
   );
 }
